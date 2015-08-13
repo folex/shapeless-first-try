@@ -4,7 +4,7 @@ import shapeless._, Nat._
 import shapeless.ops.nat._
 import shapeless.ops.hlist._
 
-object Main extends App {
+object TypedChecksum {
 
   trait HasChecksum[L <: HList, S <: Nat]
 
@@ -19,7 +19,7 @@ object Main extends App {
     st: HasChecksum[T, TS],
     tl: Length.Aux[T, TL],
     hp: Prod.Aux[H, Succ[TL], HP],
-    hs: Sum.Aux[HP, TS, HS],
+    hs: Sum.Aux[TS, HP, HS],
     sm: Mod.Aux[HS, _11, S]
   ) = new HasChecksum[H :: T, S] {}
 
